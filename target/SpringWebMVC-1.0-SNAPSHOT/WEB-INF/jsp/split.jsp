@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
     <script src="/resources/js/modernizr.custom.js"></script>
     <script src="/resources/js/d3.js"></script>
-
+    <script src="/resources/js/jquery-1.12.1.js"></script>
 
     <style>
         .node {
@@ -57,12 +57,11 @@
     <button id="showLeftPush"><span class="glyphicon glyphicon-th-large"></span></button>
 </section>
 
-<div class="container">
-    <%--<div class="main">--%>
+<%--<div class="container">--%>
+    <div class="main">
     <div id="map"></div>
-    <%--</div>--%>
-</div>
-
+    </div>
+<%--</div>--%>
 
 <script>
     var w = window.innerWidth;
