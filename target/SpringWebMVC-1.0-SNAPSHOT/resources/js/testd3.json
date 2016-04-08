@@ -10,6 +10,7 @@
       "avatar": "/resources/images/jiaweihan.jpeg",
       "interests": ["Data Mining", "Information Network", "Machine Learning", "Large Database", "Big Data", "Knowledge Discovery"]
     },
+
     {
       "name":"Jianyong Wang（王建勇）",
       "group": 1,
@@ -22,13 +23,37 @@
       "interests": ["Data Mining", "Efficient Algorithm", "Xml Document", "Web Data", "Keyword Search"]
     },
 
-    {"name": "Entity Linking with a Knowledge Base: Issues, Techniques, and Solutions", "group": 2, "type": "square" },
-    {"name": "Knowledge and Data Engineering, IEEE Transactions  (2015)", "group": 3, "type": "diamond"},
-    {"name": "A survey of named entity recognition and classification", "group":2, "type":"square" },
-    {"name": "Entity Linking", "group": 4, "type": "triangle-up" },
-    {"name": "Opening ceremony Video", "group": 5, "type": "square"}
+    {
+      "name": "Entity Linking with a Knowledge Base: Issues, Techniques, and Solutions",
+      "group": 2,
+      "type": "square"
+    },
 
+    {
+      "name": "Knowledge and Data Engineering, IEEE Transactions  (2015)",
+      "group": 3,
+      "type": "diamond"
+    },
+
+    {
+      "name": "A survey of named entity recognition and classification",
+      "group":2,
+      "type":"square"
+    },
+
+    {
+      "name": "Entity Linking",
+      "group": 4,
+      "type": "triangle-up"
+    },
+
+    {
+      "name": "Opening ceremony Video",
+      "group": 5,
+      "type": "square"
+    }
   ],
+
   "links":[
     {"source": 0, "target": 2, "value": 0.2, "label": "wrote"},
     {"source": 2, "target": 0, "value": 0.2, "label": "written by" },

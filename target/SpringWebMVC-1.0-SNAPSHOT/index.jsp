@@ -71,6 +71,7 @@
     <!-- footer -->
     <div class="footer">
         <a href="/testd3">Click To D3.js</a>
+        <a href="/split">Click to split</a>
     </div>
     <!-- //footer -->
 
