@@ -42,7 +42,16 @@
 
 <body class="cbp-spmenu-push">
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-    <h3>Menu</h3>
+
+    <div class="search-box">
+        <h3><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Heterdemic</h3>
+        <form class="form-inline">
+            <input type="text" placeholder="请输入关键字">
+            <button>
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </form>
+    </div>
     <a href="#">Celery seakale</a>
     <a href="#">Dulse daikon</a>
     <a href="#">Zucchini garlic</a>
