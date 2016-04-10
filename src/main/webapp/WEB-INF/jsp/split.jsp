@@ -64,12 +64,11 @@
 
             </tr>
             <tr>
+                <td><span style="color: #FF7F0E;">♦</span>&nbsp;Venue&nbsp;</td>
                 <td><span style="color: #FFBB78;">▲</span>&nbsp;Topic&nbsp;</td>
-                <td><span style="color: #2CA02C;">■</span>&nbsp;Video&nbsp;</td>
-
             </tr>
             <tr>
-                <td><span style="color: #FF7F0E;">♦</span>&nbsp;Venue&nbsp;</td>
+                <td><span style="color: #2CA02C;">■</span>&nbsp;Video&nbsp;</td>
             </tr>
             </tbody>
         </table>
@@ -80,7 +79,7 @@
 
 <section class="buttonset">
     <!-- Class "cbp-spmenu-open" gets applied to menu and "cbp-spmenu-push-toleft" or "cbp-spmenu-push-toright" to the body -->
-    <button id="showLeftPush"><span class="glyphicon glyphicon-th-large"></span></button>
+    <button id="showLeftPush"><span class="glyphicon glyphicon-th-list"></span></button>
 </section>
 
 <div class="main">
@@ -91,11 +90,8 @@
 <script>
     var w = window.innerWidth;
     var h = window.innerHeight;
-    //    var margin = {top: -5, right: -5, bottom: -5, left: -5};
-    //    var w = 600;
-    //    var h = 450;
 
-    var keyc = true, keys = true, keyt = true, keyr = true, keyx = true, keyd = true, keyl = true, keym = true, keyh = true, key1 = true, key2 = true, key3 = true, key0 = true
+    var keyc = true, keys = true, keyt = true, keyr = true, keyx = true, keyd = true, keyl = true, keym = true, keyh = true, key1 = true, key2 = true, key3 = true, key0 = true;
 
     var focus_node = null, highlight_node = null;
 
@@ -109,11 +105,6 @@
 
     var highlight_color = "#555";
     var highlight_trans = 0.1;
-
-    //    var size = d3.scale.pow().exponent(1)
-    //            .domain([1,100])
-    //            .range([8,24]);
-
 
     var drag = d3.behavior.drag()
             .origin(function(d) { return d; })
@@ -141,8 +132,6 @@
             .linkDistance(120)
             .charge(-300)
             .size([w,h]);
-    //            .size([w + margin.left + margin.right, h + margin.top + margin.bottom]);
-
 
     var default_node_color = "#ccc";
     var default_link_color = "#c9c9c9";
@@ -174,29 +163,17 @@
             .append("svg:path")
             .attr("d", "M0,-5L10,0L0,5");
 
+    var linkedByIndex = {};
+    var path, node;
 
     d3.json("/resources/js/testd3.json", function(error, graph) {
-
-        var linkedByIndex = {};
         graph.links.forEach(function(d) {
             linkedByIndex[d.source + "," + d.target] = true;
         });
 
-        function isConnected(a, b) {
-            return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
-        }
-
-        function hasConnections(a) {
-            for (var property in linkedByIndex) {
-                s = property.split(",");
-                if ((s[0] == a.index || s[1] == a.index) && linkedByIndex[property])return true;
-            }
-            return false;
-        }
-
         force.nodes(graph.nodes).links(graph.links).start();
 
-        var path = g.append("svg:g").selectAll("path")
+        path = g.append("svg:g").selectAll("path")
                 .data(force.links()).enter()
                 .append("svg:path")
                 .attr("class", "link")
@@ -204,7 +181,7 @@
                 .attr("id", function(d, i){ return "linkId_" + i;})
 
 
-        var node = g.selectAll(".node")
+        node = g.selectAll(".node")
                 .data(graph.nodes)
                 .enter().append("g")
                 .attr("class", "node")
@@ -229,28 +206,6 @@
                 } else {
                     timer = setTimeout(function () {
                         // single click
-                        $(document).ready(function(){
-                            var a = $('.flip-container').find('.flipper');
-                            if(!a.hasClass('flipped'))a.addClass('flipped');
-
-                            setTimeout(function(){
-                                $("#avatar").attr("src", d.avatar);
-                                $("#authorname").text(d.name);
-                                $("#dept").html("<span class=\"glyphicon glyphicon-tags\"></span>&nbsp;" + d.dept);
-                                $("#dept-position").html("<span class=\"glyphicon glyphicon-briefcase\"></span>&nbsp;" + d.position);
-                                $("#email").text(" Email: " + d.email);
-                                $("#homepage").text(" Personal Homepage: " + d.homepage);
-                                $("#homepage").attr("href", d.homepage);
-
-                                $("#research-interest").empty();
-
-                                for(var item in d.interests){
-                                    $("#research-interest").append("<span class=\"badge alert-info\">" + d.interests[item] + "</span>");
-                                }
-                                a.removeClass('flipped');
-                            },500);
-                        });
-
                         clickedOnce = false;
                     }, 200);
                     clickedOnce = true;
@@ -261,14 +216,9 @@
         node.on("dblclick.zoom", function(d) { d3.event.stopPropagation();
             var dcx = (window.innerWidth/2-d.x*zoom.scale());
             var dcy = (window.innerHeight/2-d.y*zoom.scale());
-//            var dcx = ((w + margin.left + margin.right)/2-d.x*zoom.scale());
-//            var dcy = ((h + margin.top + margin.bottom)/2-d.y*zoom.scale());
             zoom.translate([dcx,dcy]);
             g.attr("transform", "translate("+ dcx + "," + dcy  + ")scale(" + zoom.scale() + ")");
         });
-
-
-
 
         var tocolor = "fill";
         var towhite = "stroke";
@@ -276,7 +226,6 @@
             tocolor = "stroke"
             towhite = "fill"
         }
-
 
 
         var circle = node.append("path")
@@ -308,35 +257,31 @@
 //                    .text(function(d) { return '\u2002'+d.id; });
 
         node.on("mouseover", function(d) {
-                    set_highlight(d);
-                })
-                .on("mousedown", function(d) { d3.event.stopPropagation();
-                    focus_node = d;
-                    set_focus(d)
-                    if (highlight_node === null) set_highlight(d)
+            set_highlight(d);
+        }).on("mousedown", function(d) {
+            d3.event.stopPropagation();
+            focus_node = d;
+            set_focus(d)
+            if (highlight_node === null) set_highlight(d)
 
-                }	).on("mouseout", function(d) {
+        }).on("mouseout", function(d) {
             exit_highlight();
+        });
 
-        }	);
 
-
-        d3.select(window).on("mouseup",
-                function() {
-                    if (focus_node!==null)
-                    {
-                        focus_node = null;
-                        if (highlight_trans<1)
-                        {
-
-                            circle.style("opacity", 1);
+        d3.select(window).on("mouseup", function() {
+            if (focus_node!==null)
+            {
+                focus_node = null;
+                if (highlight_trans<1)
+                {
+                    circle.style("opacity", 1);
 //                            text.style("opacity", 1);
-                            path.style("opacity", 1);
-                        }
-                    }
-
-                    if (highlight_node === null) exit_highlight();
-                });
+                    path.style("opacity", 1);
+                }
+            }
+            if (highlight_node === null) exit_highlight();
+        });
 
         function exit_highlight()
         {
@@ -348,9 +293,11 @@
                 {
                     circle.style(towhite, "white");
 //                    text.style("font-weight", "normal");
-                    path.style("stroke", function(o) {return (isNumber(o.score) && o.score>=0)?color(o.score):default_link_color});
+                    path.style("stroke", function(o){
+                        return default_link_color;
+                    });
+                    //{return (isNumber(o.score) && o.score>=0)?color(o.score):default_link_color});
                 }
-
             }
         }
 
@@ -360,11 +307,9 @@
                 circle.style("opacity", function(o) {
                     return isConnected(d, o) ? 1 : highlight_trans;
                 });
-
 //                text.style("opacity", function(o) {
 //                    return isConnected(d, o) ? 1 : highlight_trans;
 //                });
-
                 path.style("opacity", function(o) {
                     return o.source.index == d.index || o.target.index == d.index ? 1 : highlight_trans;
                 });
@@ -385,8 +330,8 @@
 //                text.style("font-weight", function(o) {
 //                    return isConnected(d, o) ? "bold" : "normal";});
                 path.style("stroke", function(o) {
-                    return o.source.index == d.index || o.target.index == d.index ? highlight_color : ((isNumber(o.score) && o.score>=0)?color(o.score):default_link_color);
-
+                    return o.source.index == d.index || o.target.index == d.index ? highlight_color : default_link_color;
+                    //((isNumber(o.score) && o.score>=0)?color(o.score):default_link_color);
                 });
             }
         }
@@ -413,12 +358,9 @@
 
             g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
         });
-
         svg.call(zoom);
-
         resize();
         //window.focus();
-        d3.select(window).on("resize", resize).on("keydown", keydown);
 
         force.on("tick", function() {
             node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
@@ -451,133 +393,109 @@
             h = height;
         }
 
-        function keydown() {
-            if (d3.event.keyCode==32) {  force.stop();}
-            else if (d3.event.keyCode>=48 && d3.event.keyCode<=90 && !d3.event.ctrlKey && !d3.event.altKey && !d3.event.metaKey)
-            {
-                switch (String.fromCharCode(d3.event.keyCode)) {
-                    case "C": keyc = !keyc; break;
-                    case "S": keys = !keys; break;
-                    case "T": keyt = !keyt; break;
-                    case "R": keyr = !keyr; break;
-                    case "X": keyx = !keyx; break;
-                    case "D": keyd = !keyd; break;
-                    case "L": keyl = !keyl; break;
-                    case "M": keym = !keym; break;
-                    case "H": keyh = !keyh; break;
-                    case "1": key1 = !key1; break;
-                    case "2": key2 = !key2; break;
-                    case "3": key3 = !key3; break;
-                    case "0": key0 = !key0; break;
-                }
-
-                path.style("display", function(d) {
-                    var flag  = vis_by_type(d.source.type)&&vis_by_type(d.target.type)&&vis_by_node_score(d.source.score)&&vis_by_node_score(d.target.score)&&vis_by_link_score(d.score);
-                    linkedByIndex[d.source.index + "," + d.target.index] = flag;
-                    return flag?"inline":"none";});
-                node.style("display", function(d) {
-                    return (key0||hasConnections(d))&&vis_by_type(d.type)&&vis_by_node_score(d.score)?"inline":"none";});
-
-//                text.style("display", function(d) {
-//                    return (key0||hasConnections(d))&&vis_by_type(d.type)&&vis_by_node_score(d.score)?"inline":"none";});
-
-                if (highlight_node !== null)
-                {
-                    if ((key0||hasConnections(highlight_node))&&vis_by_type(highlight_node.type)&&vis_by_node_score(highlight_node.score)) {
-                        if (focus_node!==null) set_focus(focus_node);
-                        set_highlight(highlight_node);
-                    }
-                    else {exit_highlight();}
-                }
-
-            }
-        }
     });
 
-    function vis_by_type(type)
-    {
-        switch (type) {
-            case "circle": return keyc;
-            case "square": return keys;
-            case "triangle-up": return keyt;
-            case "diamond": return keyr;
-            case "cross": return keyx;
-            case "triangle-down": return keyd;
+//    function isNumber(n) {
+//        return !isNaN(parseFloat(n)) && isFinite(n);
+//    }
+
+    var showAuthor, showPaper, showTopic, showVenue, showVideo;
+    showAuthor = showPaper = showTopic = showVenue = showVideo = true;
+
+    function isConnected(a, b) {
+        return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
+    }
+
+    function hasConnections(a) {
+        for (var property in linkedByIndex) {
+            s = property.split(",");
+            if ((s[0] == a.index || s[1] == a.index) && linkedByIndex[property])return true;
+        }
+        return false;
+    }
+
+    function vis_by_group(group){
+        switch(group){
+            case 1: return showAuthor;
+            case 2: return showPaper;
+            case 3: return showVenue;
+            case 4: return showTopic;
+            case 5: return showVideo;
             default: return true;
         }
     }
-    function vis_by_node_score(score)
-    {
-        if (isNumber(score))
-        {
-            if (score>=0.666) return keyh;
-            else if (score>=0.333) return keym;
-            else if (score>=0) return keyl;
-        }
-        return true;
-    }
 
-    function vis_by_link_score(score)
-    {
-        if (isNumber(score))
-        {
-            if (score>=0.666) return key3;
-            else if (score>=0.333) return key2;
-            else if (score>=0) return key1;
+    function hideNodesAndEdge(type){
+        switch(type){
+            case 1: showAuthor = !showAuthor; break;
+            case 2: showPaper = !showPaper; break;
+            case 3: showVenue = !showVenue; break;
+            case 4: showTopic = !showTopic; break;
+            case 5: showVideo = !showVideo; break;
         }
-        return true;
-    }
+        path.style("display", function(d) {
+            var flag  = vis_by_group(d.source.group)&&vis_by_group(d.target.group);
+            linkedByIndex[d.source.index + "," + d.target.index] = flag;
+            return flag?"inline":"none";});
 
-    function isNumber(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
+        node.style("display", function(d) {
+            return vis_by_group(d.group)?"inline":"none";
+        });
     }
 
     $(document).ready(function(){
         $("table tr:nth-child(1) td:nth-child(1)").click(
                 function(){
-                    if(keyc) {
+                    if(showAuthor) {
                         $(this).css({"background-color": "#212121"});
                     }else{
                         $(this).css({"background-color": "#3AB7DA"});
                     }
-                    keyc = !keyc;
+                    hideNodesAndEdge(1);
                 }
         );
 
         $("table tr:nth-child(1) td:nth-child(2)").click(
                 function(){
-                    if(keyc) {
+                    if(showPaper) {
                         $(this).css({"background-color": "#212121"});
                     }else{
                         $(this).css({"background-color": "#3AB7DA"});
                     }
+                    hideNodesAndEdge(2);
                 }
         );
+
         $("table tr:nth-child(2) td:nth-child(1)").click(
                 function(){
-                    if(keyc) {
+                    if(showVenue) {
                         $(this).css({"background-color": "#212121"});
                     }else{
                         $(this).css({"background-color": "#3AB7DA"});
                     }
+                    hideNodesAndEdge(3);
                 }
         );
+
         $("table tr:nth-child(2) td:nth-child(2)").click(
                 function(){
-                    if(keyc) {
+                    if(showTopic) {
                         $(this).css({"background-color": "#212121"});
                     }else{
                         $(this).css({"background-color": "#3AB7DA"});
                     }
+                    hideNodesAndEdge(4);
                 }
         );
+
         $("table tr:nth-child(3) td:nth-child(1)").click(
                 function(){
-                    if(keyc) {
+                    if(showVideo) {
                         $(this).css({"background-color": "#212121"});
                     }else{
                         $(this).css({"background-color": "#3AB7DA"});
                     }
+                    hideNodesAndEdge(5);
                 }
         );
     });
