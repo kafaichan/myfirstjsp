@@ -38,6 +38,7 @@
             stroke-width: 1.5px;
         }
     </style>
+
 </head>
 
 <body class="cbp-spmenu-push">
@@ -52,12 +53,28 @@
             </button>
         </form>
     </div>
-    <a href="#">Celery seakale</a>
-    <a href="#">Dulse daikon</a>
-    <a href="#">Zucchini garlic</a>
-    <a href="#">Catsear azuki bean</a>
-    <a href="#">Dandelion bunya</a>
-    <a href="#">Rutabaga</a>
+
+    <div class="legend-box">
+        <h4>Legend</h4>
+        <table>
+            <tbody>
+            <tr>
+                <td><span style="color:#1F77B4">•</span>&nbsp;Author</td>
+                <td><span style="color:#AEC7E8">■</span>&nbsp;Paper&nbsp;</td>
+
+            </tr>
+            <tr>
+                <td><span style="color: #FFBB78;">▲</span>&nbsp;Topic&nbsp;</td>
+                <td><span style="color: #2CA02C;">■</span>&nbsp;Video&nbsp;</td>
+
+            </tr>
+            <tr>
+                <td><span style="color: #FF7F0E;">♦</span>&nbsp;Venue&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </nav>
 
 
@@ -66,12 +83,11 @@
     <button id="showLeftPush"><span class="glyphicon glyphicon-th-large"></span></button>
 </section>
 
-<%--<div class="container">--%>
-    <div class="main">
+<div class="main">
     <div id="map"></div>
-    </div>
-<%--</div>--%>
+</div>
 
+<!-- graph start -->
 <script>
     var w = window.innerWidth;
     var h = window.innerHeight;
@@ -208,7 +224,7 @@
                 if (clickedOnce) {
                     clickedOnce = false;
                     clearTimeout(timer);
-                    event.dblclick(d3.event);
+//                    event.dblclick(d3.event);
 
                 } else {
                     timer = setTimeout(function () {
@@ -476,7 +492,6 @@
 
             }
         }
-
     });
 
     function vis_by_type(type)
@@ -516,7 +531,59 @@
     function isNumber(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
+
+    $(document).ready(function(){
+        $("table tr:nth-child(1) td:nth-child(1)").click(
+                function(){
+                    if(keyc) {
+                        $(this).css({"background-color": "#212121"});
+                    }else{
+                        $(this).css({"background-color": "#3AB7DA"});
+                    }
+                    keyc = !keyc;
+                }
+        );
+
+        $("table tr:nth-child(1) td:nth-child(2)").click(
+                function(){
+                    if(keyc) {
+                        $(this).css({"background-color": "#212121"});
+                    }else{
+                        $(this).css({"background-color": "#3AB7DA"});
+                    }
+                }
+        );
+        $("table tr:nth-child(2) td:nth-child(1)").click(
+                function(){
+                    if(keyc) {
+                        $(this).css({"background-color": "#212121"});
+                    }else{
+                        $(this).css({"background-color": "#3AB7DA"});
+                    }
+                }
+        );
+        $("table tr:nth-child(2) td:nth-child(2)").click(
+                function(){
+                    if(keyc) {
+                        $(this).css({"background-color": "#212121"});
+                    }else{
+                        $(this).css({"background-color": "#3AB7DA"});
+                    }
+                }
+        );
+        $("table tr:nth-child(3) td:nth-child(1)").click(
+                function(){
+                    if(keyc) {
+                        $(this).css({"background-color": "#212121"});
+                    }else{
+                        $(this).css({"background-color": "#3AB7DA"});
+                    }
+                }
+        );
+    });
+
 </script>
+<!-- // end of graph-->
 
 <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
 <script src="/resources/js/classie.js"></script>
@@ -531,8 +598,6 @@
         classie.toggle( body, 'cbp-spmenu-push-toright' );
         classie.toggle( menuLeft, 'cbp-spmenu-open' );
     };
-
-
 </script>
 </body>
 </html>

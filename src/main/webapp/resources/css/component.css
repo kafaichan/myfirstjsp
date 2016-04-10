@@ -1,7 +1,8 @@
 /* General styles for all menus */
 .cbp-spmenu {
-	background: #47a3da;
+	background: #333;
 	position: fixed;
+	opacity: 0.95;
 }
 
 /*.cbp-spmenu h3 {*/
@@ -36,6 +37,45 @@
 	border: 0em;
 	background-color: #00c3f9;
 	color: white;
+}
+
+.legend-box {
+	height: inherit;
+	width: inherit;
+	background-color: #333;
+	margin: 0;
+}
+
+.legend-box > h4 {
+	color: white;
+	padding: 0.5em;
+	border-bottom: 0.5px solid #737373;
+	margin: 0;
+	background-color: #B3DE07;
+}
+
+/* table */
+
+table{
+	width:inherit;
+	border-collapse: separate;
+	border-spacing: 3px;
+}
+
+tr {
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+}
+
+td, th {
+	font-size: 1.5em;
+	padding: 1em;
+	cursor: pointer;
+	background-color: #3AB7DA;
+}
+td:hover {
+	border: 1px solid white;
 }
 
 .cbp-spmenu a {
