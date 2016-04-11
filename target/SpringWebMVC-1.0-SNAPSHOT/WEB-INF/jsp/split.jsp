@@ -32,10 +32,56 @@
             stroke-width: 1.5px;
         }
 
-        path.link {
+        path.link.a2p {
             fill: none;
-            stroke: #c9c9c9;
+            stroke: #26c9b0;
             stroke-width: 1.5px;
+        }
+
+        path.link.p2a{
+            fill: none;
+            stroke-dasharray: 0,2 1;
+            stroke: #aff95b;
+            stroke-width: 1.5px;
+        }
+
+        path.link.p2c{
+            fill: none;
+            stroke: #649dff;
+            stroke-width: 1.5px;
+        }
+
+        path.link.c2p{
+            fill: none;
+            stroke-dasharray: 0,2 1;
+            stroke: #f9e608;
+            stroke-width: 1.5px;
+        }
+
+        path.link.p2p{
+            fill: none;
+            stroke: #AEC7E8;
+            stroke-width: 1.5px;
+        }
+
+        path.link.p2pr{
+            fill: none;
+            stroke-dasharray: 0,2 1;
+            stroke: #f9443a;
+            stroke-width: 1.5px;
+        }
+
+        path.link.t2p{
+            fill:none;
+            stroke-width: 1.5px;
+            stroke: #b757ff;
+        }
+
+        path.link.t2v{
+            fill:none;
+            stroke-dasharray: 0,2 1;
+            stroke: #ff23b5;
+            strok-width: 1.5px;
         }
     </style>
 
@@ -136,14 +182,8 @@
     g.append("svg:defs").selectAll("marker").data(["end"])
             .enter().append("svg:marker")
             .attr("id", String)
-            //            .attr("viewBox", "0 -5 10 10")
-            //            .attr("refX", 10)
-            //            .attr("refY", 0)
-            //            .attr("markerWidth", 6)
-            //            .attr("markerHeight", 6)
             .attr("orient", "auto")
-            .append("svg:path")
-    //            .attr("d", "M0,-5L10,0L0,5");
+            .append("svg:path");
 
 
     d3.json("/resources/js/testd3.json", function(error, graph) {
@@ -173,10 +213,11 @@
         var link = g.append("svg:g").selectAll("path")
                 .data(force.links()).enter()
                 .append("svg:path")
-                .attr("class", "link")
+                .attr("class", function(d){ return "link " + d.type;} )
                 .attr("marker-end", "url(#end)")
                 .attr("id", function(d, i){ return "linkId_" + i;});
 
+        link.append('title').text(function(d) {return d.label;});
 //        var link = g.selectAll(".link")
 //                .data(graph.links)
 //                .enter().append("line")
@@ -194,6 +235,7 @@
                 .call(force.drag)
 
         node.append('title').text(function(d) {return d.name;});
+
         var clickedOnce = false;
         var timer;
 
@@ -231,8 +273,6 @@
             tocolor = "stroke"
             towhite = "fill"
         }
-
-
 
         var circle = node.append("path")
                 .attr("d", d3.svg.symbol()
@@ -275,6 +315,21 @@
                     if (highlight_node === null) exit_highlight();
                 });
 
+
+        function getEdgeColorByType(type){
+            switch(type){
+                case "a2p": return "#26c9b0";
+                case "p2a": return "#aff95b";
+                case "p2c": return "#649dff";
+                case "c2p": return "#f9e608";
+                case "p2p": return "#aec7e8";
+                case "p2pr": return "#f9443a";
+                case "t2p": return "#b757ff";
+                case "t2v": return "#ff23b5";
+                default: return default_link_color;
+            }
+        }
+
         function exit_highlight()
         {
             highlight_node = null;
@@ -284,7 +339,11 @@
                 if (highlight_color!="white")
                 {
                     circle.style(towhite, "white");
-                    link.style("stroke", function(o) {return (isNumber(o.score) && o.score>=0)?color(o.score):default_link_color});
+                    link.style("stroke", function(o) {
+                        return getEdgeColorByType(o.type);
+                    });
+                    circle.style("opacity", 1);
+                    link.style("opacity", 1);
                 }
             }
         }
@@ -293,15 +352,14 @@
         {
             if (highlight_trans<1)  {
                 circle.style("opacity", function(o) {
-                    return isConnected(d, o) ? 1 : highlight_trans;
+                    return isConnected(d, o) ? 1 : 0;
                 });
 
                 link.style("opacity", function(o) {
-                    return o.source.index == d.index || o.target.index == d.index ? 1 : highlight_trans;
+                    return o.source.index == d.index || o.target.index == d.index ? 1 : 0;
                 });
             }
         }
-
 
         function set_highlight(d)
         {
@@ -311,12 +369,16 @@
 
             if (highlight_color!="white")
             {
-                circle.style(towhite, function(o) {
-                    return isConnected(d, o) ? highlight_color : "white";});
+                circle.style("opacity", function(o) {
+                    return isConnected(d, o) ? 1 : highlight_trans;
+                });
 
                 link.style("stroke", function(o) {
-                    return o.source.index == d.index || o.target.index == d.index ? highlight_color : ((isNumber(o.score) && o.score>=0)?color(o.score):default_link_color);
+                    return o.source.index == d.index || o.target.index == d.index ? getEdgeColorByType(o.type):default_link_color;
+                });
 
+                link.style("opacity", function(o) {
+                    return o.source.index == d.index || o.target.index == d.index ? 1 : highlight_trans;
                 });
             }
         }

@@ -63,15 +63,15 @@
   ],
 
   "links":[
-    {"source": 0, "target": 2, "value": 0.2, "label": "wrote", "type": 1},
-    {"source": 2, "target": 0, "value": 0.2, "label": "written by", "type": 2},
-    {"source": 1, "target": 2, "value": 0.75, "label": "wrote", "type": 1},
-    {"source": 2, "target": 1, "value": 0.2, "label": "written by", "type": 2},
-    {"source": 3, "target": 2, "value": 0.75, "label": "accept", "type": 3},
-    {"source": 2, "target": 3, "value": 0.5, "label": "accepted by", "type": 4},
-    {"source": 2, "target": 4, "value": 0.75, "label": "cite", "type": 5},
-    {"source": 4, "target": 2, "value": 0.2, "label": "cited", "type": 6},
-    {"source": 5, "target": 2, "value": 0.75, "label": "relate to", "type": 7},
-    {"source": 5, "target": 6, "value": 0.4, "label": "relate to", "type": 8}
+    {"source": 0, "target": 2, "value": 0.2, "label": "wrote", "type": "a2p"},
+    {"source": 2, "target": 0, "value": 0.2, "label": "written by", "type": "p2a"},
+    {"source": 1, "target": 2, "value": 0.75, "label": "wrote", "type": "a2p"},
+    {"source": 2, "target": 1, "value": 0.2, "label": "written by", "type": "p2a"},
+    {"source": 3, "target": 2, "value": 0.75, "label": "accept", "type": "c2p"},
+    {"source": 2, "target": 3, "value": 0.5, "label": "accepted by", "type": "p2c"},
+    {"source": 2, "target": 4, "value": 0.75, "label": "cite", "type": "p2p"},
+    {"source": 4, "target": 2, "value": 0.2, "label": "cited", "type": "p2pr"},
+    {"source": 5, "target": 2, "value": 0.75, "label": "relate to", "type": "t2p"},
+    {"source": 5, "target": 6, "value": 0.4, "label": "relate to", "type": "t2v"}
   ]
 }

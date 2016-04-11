@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e30ed14-e1b1-44c2-842a-8ce11a2a356d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testd3.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testd3.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/finaljson.json" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/finaljson.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/WEB-INF/jsp/split.jsp" afterPath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/WEB-INF/jsp/split.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/WEB-INF/jsp/testd3.jsp" afterPath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/WEB-INF/jsp/testd3.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/resources/js/finaljson.json" afterPath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/resources/js/finaljson.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/resources/js/testd3.json" afterPath="$PROJECT_DIR$/target/SpringWebMVC-1.0-SNAPSHOT/resources/js/testd3.json" />
     </list>
     <ignored path="SpringWebMVC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,15 +25,15 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DockManager">
-    <window id="1">
+    <window id="2">
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="testd3.jsp" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testd3.jsp">
+            <file leaf-file-name="testd3.json" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.83416253">
-                    <caret line="446" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="446" selection-end-column="0" />
+                  <state vertical-scroll-proportion="0.30769232">
+                    <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
                     <folding />
                   </state>
                 </provider>
@@ -61,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.64190984">
-              <caret line="233" column="8" selection-start-line="233" selection-start-column="8" selection-end-line="233" selection-end-column="8" />
+              <caret line="345" column="45" selection-start-line="345" selection-start-column="45" selection-end-line="345" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -90,7 +83,7 @@
       <file leaf-file-name="finaljson.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/finaljson.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.75">
+            <state vertical-scroll-proportion="2.4166667">
               <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding />
             </state>
@@ -102,16 +95,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testd3.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.125">
-              <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -183,8 +166,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/default.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/component.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/finaljson.json" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testd3.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp" />
       </list>
     </option>
@@ -1038,7 +1021,7 @@
       <workItem from="1459414854739" duration="39660000" />
       <workItem from="1459739291793" duration="59831000" />
       <workItem from="1459978881191" duration="76534000" />
-      <workItem from="1460338877454" duration="2586000" />
+      <workItem from="1460338877454" duration="6720000" />
     </task>
     <servers />
   </component>
@@ -1075,7 +1058,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="374423000" />
+    <option name="totallyTimeSpent" value="378557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1152,7 +1135,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="40" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1513,22 +1496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.125">
-          <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/finaljson.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.75">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/default.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1545,10 +1512,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/finaljson.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.4166667">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30769232">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.64190984">
-          <caret line="233" column="8" selection-start-line="233" selection-start-column="8" selection-end-line="233" selection-end-column="8" />
+          <caret line="345" column="45" selection-start-line="345" selection-start-column="45" selection-end-line="345" selection-end-column="45" />
           <folding />
         </state>
       </provider>
