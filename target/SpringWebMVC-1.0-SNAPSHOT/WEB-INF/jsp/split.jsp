@@ -138,7 +138,6 @@
     var w = window.innerWidth;
     var h = window.innerHeight;
 
-
     var focus_node = null, highlight_node = null;
 
     var text_center = false;
@@ -161,8 +160,27 @@
             .charge(-300)
             .size([w,h]);
 
+    var drag = d3.behavior.drag()
+            .origin(function(d) { return d; })
+            .on("dragstart", dragstarted)
+            .on("drag", dragged)
+            .on("dragend", dragended);
+
+    function dragstarted(d) {
+        d3.event.sourceEvent.stopPropagation();
+        d3.select(this).classed("dragging", true);
+        force.start();
+    }
+
+    function dragged(d) {
+        d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+    }
+
+    function dragended(d) {
+        d3.select(this).classed("dragging", false);
+    }
+
     var default_node_color = "#ccc";
-    //var default_node_color = "rgb(3,190,100)";
     var default_link_color = "#c9c9c9";
     var nominal_base_node_size = 5;
     var nominal_text_size = 10;
@@ -197,13 +215,13 @@
             return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
         }
 
-        function hasConnections(a) {
-            for (var property in linkedByIndex) {
-                s = property.split(",");
-                if ((s[0] == a.index || s[1] == a.index) && linkedByIndex[property])return true;
-            }
-            return false;
-        }
+//        function hasConnections(a) {
+//            for (var property in linkedByIndex) {
+//                s = property.split(",");
+//                if ((s[0] == a.index || s[1] == a.index) && linkedByIndex[property])return true;
+//            }
+//            return false;
+//        }
 
         force
                 .nodes(graph.nodes)
@@ -218,21 +236,12 @@
                 .attr("id", function(d, i){ return "linkId_" + i;});
 
         link.append('title').text(function(d) {return d.label;});
-//        var link = g.selectAll(".link")
-//                .data(graph.links)
-//                .enter().append("line")
-//                .attr("class", "link")
-//                .style("stroke-width",nominal_stroke)
-//                .style("stroke", function(d) {
-//                    if (isNumber(d.score) && d.score>=0) return color(d.score);
-//                    else return default_link_color; })
-
 
         var node = g.selectAll(".node")
                 .data(graph.nodes)
                 .enter().append("g")
                 .attr("class", "node")
-                .call(force.drag)
+                .call(drag)
 
         node.append('title').text(function(d) {return d.name;});
 
@@ -245,11 +254,10 @@
                 if (clickedOnce) {
                     clickedOnce = false;
                     clearTimeout(timer);
-//                    event.dblclick(d3.event);
-
                 } else {
                     timer = setTimeout(function () {
                         // single click
+                        alert("single click");
                         clickedOnce = false;
                     }, 200);
                     clickedOnce = true;
@@ -263,9 +271,6 @@
             zoom.translate([dcx,dcy]);
             g.attr("transform", "translate("+ dcx + "," + dcy  + ")scale(" + zoom.scale() + ")");
         });
-
-
-
 
         var tocolor = "fill";
         var towhite = "stroke";
@@ -281,8 +286,6 @@
 
                 .style(tocolor, function(d) {
                     return color(d.group);})
-                //                    else return default_node_color; })
-                //.attr("r", function(d) { return size(d.size)||nominal_base_node_size; })
                 .style("stroke-width", nominal_stroke)
                 .style(towhite, "white");
 
