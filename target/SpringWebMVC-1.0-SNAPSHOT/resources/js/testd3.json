@@ -22,7 +22,7 @@
       "homepage": "http://dbgroup.cs.tsinghua.edu.cn/wangjy/",
       "avatar": "/resources/images/jianyongwang.jpeg",
       "interests": ["Data Mining", "Efficient Algorithm", "Xml Document", "Web Data", "Keyword Search"],
-      "probability": 87
+      "probability": 80.2
     },
 
     {
@@ -36,7 +36,7 @@
       "name": "Knowledge and Data Engineering, IEEE Transactions  (2015)",
       "group": 3,
       "type": "diamond",
-      "probability": 78
+      "probability": 60.3
     },
 
     {
@@ -67,11 +67,11 @@
     {"source": 2, "target": 0, "value": 0.2, "label": "written by", "type": "p2a"},
     {"source": 1, "target": 2, "value": 0.75, "label": "wrote", "type": "a2p"},
     {"source": 2, "target": 1, "value": 0.2, "label": "written by", "type": "p2a"},
-    {"source": 3, "target": 2, "value": 0.75, "label": "accept", "type": "c2p"},
-    {"source": 2, "target": 3, "value": 0.5, "label": "accepted by", "type": "p2c"},
+    {"source": 3, "target": 2, "value": 0.75, "label": "accepted", "type": "c2p"},
+    {"source": 2, "target": 3, "value": 0.5, "label": "published", "type": "p2c"},
     {"source": 2, "target": 4, "value": 0.75, "label": "cite", "type": "p2p"},
     {"source": 4, "target": 2, "value": 0.2, "label": "cited", "type": "p2pr"},
-    {"source": 5, "target": 2, "value": 0.75, "label": "relate to", "type": "t2p"},
-    {"source": 5, "target": 6, "value": 0.4, "label": "relate to", "type": "t2v"}
+    {"source": 5, "target": 2, "value": 0.75, "label": "related to", "type": "relateto"},
+    {"source": 5, "target": 6, "value": 0.4, "label": "related to", "type": "relateto"}
   ]
 }

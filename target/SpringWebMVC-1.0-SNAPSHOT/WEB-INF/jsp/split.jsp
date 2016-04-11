@@ -71,18 +71,12 @@
             stroke-width: 1.5px;
         }
 
-        path.link.t2p{
+        path.link.relateto{
             fill:none;
             stroke-width: 1.5px;
             stroke: #b757ff;
         }
 
-        path.link.t2v{
-            fill:none;
-            stroke-dasharray: 0,2 1;
-            stroke: #ff23b5;
-            strok-width: 1.5px;
-        }
     </style>
 
 </head>
@@ -101,20 +95,36 @@
     </div>
 
     <div class="legend-box">
-        <h4>Legend</h4>
-        <table>
+        <h4>Node Legend</h4>
+        <table class="node-legend-box">
             <tbody>
             <tr>
                 <td><span style="color:#1F77B4">•</span>&nbsp;Author</td>
                 <td><span style="color:#AEC7E8">■</span>&nbsp;Paper&nbsp;</td>
-
-            </tr>
-            <tr>
                 <td><span style="color: #FF7F0E;">♦</span>&nbsp;Venue&nbsp;</td>
                 <td><span style="color: #FFBB78;">▲</span>&nbsp;Topic&nbsp;</td>
-            </tr>
-            <tr>
                 <td><span style="color: #2CA02C;">■</span>&nbsp;Video&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <h4>Line Legend</h4>
+
+        <table class="line-legend-box">
+            <tbody>
+            <tr>
+                <td><span style="color: #26c9b0;font-weight: 900;">—</span>&nbsp;Wrote</td>
+                <td><span style="color: #aff95b;font-weight: 900;">- -</span>&nbsp;Written by</td>
+                <td><span style="color: #649dff;font-weight: 900;">—</span>&nbsp;Published</td>
+            </tr>
+
+            <tr>
+                <td><span style="color: #f9e608;font-weight: 900;">- -</span>&nbsp;Accepted</td>
+                <td><span style="color: #aec7e8;font-weight: 900;">—</span>&nbsp;Cite</td>
+                <td><span style="color: #f9443a;font-weight: 900;">- -</span>&nbsp;Cited</td>
+            </tr>
+
+            <tr>
+                <td><span style="color: #b757ff;font-weight: 900;">—</span>&nbsp;Related to</td>
             </tr>
             </tbody>
         </table>
@@ -215,14 +225,6 @@
             return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
         }
 
-//        function hasConnections(a) {
-//            for (var property in linkedByIndex) {
-//                s = property.split(",");
-//                if ((s[0] == a.index || s[1] == a.index) && linkedByIndex[property])return true;
-//            }
-//            return false;
-//        }
-
         force
                 .nodes(graph.nodes)
                 .links(graph.links)
@@ -257,7 +259,7 @@
                 } else {
                     timer = setTimeout(function () {
                         // single click
-                        alert("single click");
+
                         clickedOnce = false;
                     }, 200);
                     clickedOnce = true;
@@ -327,8 +329,7 @@
                 case "c2p": return "#f9e608";
                 case "p2p": return "#aec7e8";
                 case "p2pr": return "#f9443a";
-                case "t2p": return "#b757ff";
-                case "t2v": return "#ff23b5";
+                case "relateto": return "#b757ff";
                 default: return default_link_color;
             }
         }
@@ -374,7 +375,8 @@
             {
                 circle.style("opacity", function(o) {
                     return isConnected(d, o) ? 1 : highlight_trans;
-                });
+                }).style(towhite, function(o) {
+                return isConnected(d, o) ? highlight_color : "white";});
 
                 link.style("stroke", function(o) {
                     return o.source.index == d.index || o.target.index == d.index ? getEdgeColorByType(o.type):default_link_color;
@@ -385,7 +387,6 @@
                 });
             }
         }
-
 
         zoom.on("zoom", function() {
             var stroke = nominal_stroke;
@@ -494,7 +495,7 @@
                     }
             );
 
-            $("table tr:nth-child(2) td:nth-child(1)").click(
+            $("table tr:nth-child(1) td:nth-child(3)").click(
                     function(){
                         if(showVenue) {
                             $(this).css({"background-color": "#212121"});
@@ -505,7 +506,7 @@
                     }
             );
 
-            $("table tr:nth-child(2) td:nth-child(2)").click(
+            $("table tr:nth-child(1) td:nth-child(4)").click(
                     function(){
                         if(showTopic) {
                             $(this).css({"background-color": "#212121"});
@@ -516,7 +517,7 @@
                     }
             );
 
-            $("table tr:nth-child(3) td:nth-child(1)").click(
+            $("table tr:nth-child(1) td:nth-child(5)").click(
                     function(){
                         if(showVideo) {
                             $(this).css({"background-color": "#212121"});

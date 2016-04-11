@@ -13,7 +13,7 @@
 	margin: 0;
 	font-weight: 300;
 	border-bottom: 1px solid #737373;
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://4.bp.blogspot.com/-2YQ0jh0cDws/TuXXWOSFvyI/AAAAAAAABCU/SCJ_8Ygj0tw/s1600/hprichbg_20111212.jpg') no-repeat center center;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://haiv.org/ku/wp-content/uploads/2012/05/hprichbg.jpg') no-repeat center center;
 }
 
 .search-box > h3{
@@ -51,31 +51,54 @@
 	padding: 0.5em;
 	border-bottom: 0.5px solid #737373;
 	margin: 0;
-	background-color: #B3DE07;
+	background-color: #ADD410;
 }
 
 /* table */
 
-table{
+table.node-legend-box{
 	width:inherit;
 	border-collapse: separate;
-	border-spacing: 3px;
+	border-spacing: 2px;
+	table-layout: fixed;
 }
 
-tr {
+.node-legend-box tr{
 	text-align: center;
 	vertical-align: middle;
 	color: white;
 }
 
-td, th {
-	font-size: 1.5em;
-	padding: 1em;
+.node-legend-box td,th{
+	font-size: 1em;
+	padding: 1em 0 1em 0;
 	cursor: pointer;
 	background-color: #3AB7DA;
+	word-break : break-all;
 }
-td:hover {
+
+.node-legend-box td:hover{
 	border: 1px solid white;
+}
+
+table.line-legend-box {
+	width: inherit;
+	border-collapse: separate;
+	border-spacing: 2px;
+	table-layout: fixed;
+}
+
+.line-legend-box tr {
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+}
+
+.line-legend-box td {
+	font-size: 1.2em;
+	padding: 1em 0 1em 0;
+	background-color: #212121;
+	word-break: break-all;
 }
 
 .cbp-spmenu a {
