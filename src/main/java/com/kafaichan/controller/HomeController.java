@@ -119,7 +119,7 @@ public class HomeController {
 
     @RequestMapping(value="/split", method=RequestMethod.GET)
     public String split(){
-        return "split";
+        return "result";
     }
 
 }

@@ -1,0 +1,81 @@
+body, html {
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.header a{
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.header a:hover,.header a:active,.header a:visited,.header a:link{
+    color: white;
+    text-decoration: none;
+}
+
+
+.header {
+    background-color: #212121;
+    opacity: 0.95;
+}
+
+.search-box {
+    color: #505050;
+    font-size: 1em;
+    padding: 1.25em 1.25em 1.25em 4em;
+    margin-top: 4.5em;
+    font-weight: 300;
+    width: 100%;
+}
+
+.search-box > h4{
+    color: white;
+}
+
+.search-box > form > input[type="text"] {
+    padding: 0.12em 0.12em 0.12em 0.5em;
+    height: 2.5em;
+    z-index: 2;
+    border:none;
+    width: 80%;
+}
+
+.search-box > .form-inline > button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 5%;
+    height: 2.374em;
+    margin-left: -0.3em;
+    border: 0em;
+    background-color: #00c3f9;
+    color: white;
+}
+
+.jumbotron {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/resources/images/indexbg.jpeg') no-repeat center center;
+    min-height: 95%;
+    margin-bottom: 0;
+}
+
+.footer{
+    min-height: 5%;
+    background-color: #000000;
+    opacity: 0.98;
+}
+
+.footer a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.45em;
+    color: white;
+    font-size: x-small;
+}
+
+.footer a:hover, .footer a:link, .footer a:active, .footer a:visited{
+    text-decoration: none;
+    color: white;
+}

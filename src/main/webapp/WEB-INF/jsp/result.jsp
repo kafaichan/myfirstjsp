@@ -18,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-theme.min.css" />
 
-    <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
     <script src="/resources/js/modernizr.custom.js"></script>
@@ -143,7 +142,6 @@
 </div>
 
 <!-- graph start -->
-
 <script>
     var w = window.innerWidth;
     var h = window.innerHeight;
@@ -299,6 +297,7 @@
                 .on("mousedown", function(d) { d3.event.stopPropagation();
                     focus_node = d;
                     set_focus(d)
+
                     if (highlight_node === null) set_highlight(d)
 
                 }	).on("mouseout", function(d) {
@@ -310,12 +309,20 @@
                 function() {
                     if (focus_node!==null)
                     {
-                        focus_node = null;
                         if (highlight_trans<1)
                         {
-                            circle.style("opacity", 1);
-                            link.style("opacity", 1);
+                            circle.style("opacity", function(o) {
+                                return isConnected(focus_node, o) ? 1 : highlight_trans;
+                            }).style(towhite, function(o) {
+                                return isConnected(focus_node, o) ? highlight_color : "white";});
+
+                            link.style("stroke", function(o) {
+                                return o.source.index == focus_node.index || o.target.index == focus_node.index ? getEdgeColorByType(o.type):default_link_color;
+                            }).style("opacity", function(o) {
+                                return o.source.index == focus_node.index || o.target.index == focus_node.index ? 1 : highlight_trans;
+                            });
                         }
+                        focus_node = null;
                     }
                     if (highlight_node === null) exit_highlight();
                 });
@@ -342,12 +349,10 @@
                 svg.style("cursor","move");
                 if (highlight_color!="white")
                 {
-                    circle.style(towhite, "white");
+                    circle.style(towhite, "white").style("opacity", 1);
                     link.style("stroke", function(o) {
                         return getEdgeColorByType(o.type);
-                    });
-                    circle.style("opacity", 1);
-                    link.style("opacity", 1);
+                    }).style("opacity", 1);
                 }
             }
         }
@@ -380,9 +385,7 @@
 
                 link.style("stroke", function(o) {
                     return o.source.index == d.index || o.target.index == d.index ? getEdgeColorByType(o.type):default_link_color;
-                });
-
-                link.style("opacity", function(o) {
+                }).style("opacity", function(o) {
                     return o.source.index == d.index || o.target.index == d.index ? 1 : highlight_trans;
                 });
             }
@@ -534,7 +537,6 @@
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
 </script>
-
 <!-- // end of graph-->
 
 <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
