@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5e30ed14-e1b1-44c2-842a-8ce11a2a356d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/component.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json" />
     </list>
     <ignored path="SpringWebMVC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,26 +23,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="3">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="testd3.json" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.83554375">
-                    <caret line="74" column="85" selection-start-line="74" selection-start-column="85" selection-end-line="74" selection-end-column="85" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SpringWebMVC" />
@@ -54,8 +32,8 @@
       <file leaf-file-name="split.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.151194">
-              <caret line="331" column="50" selection-start-line="331" selection-start-column="50" selection-end-line="331" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.055702917">
+              <caret line="519" column="36" selection-start-line="519" selection-start-column="36" selection-end-line="519" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -64,7 +42,7 @@
       <file leaf-file-name="component.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="81.166664">
+            <state vertical-scroll-proportion="-25.625">
               <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
               <folding />
             </state>
@@ -1032,7 +1010,7 @@
       <workItem from="1459414854739" duration="39660000" />
       <workItem from="1459739291793" duration="59831000" />
       <workItem from="1459978881191" duration="76534000" />
-      <workItem from="1460338877454" duration="15462000" />
+      <workItem from="1460338877454" duration="15801000" />
     </task>
     <servers />
   </component>
@@ -1069,7 +1047,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="387299000" />
+    <option name="totallyTimeSpent" value="387638000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1084,7 +1062,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32176656" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32176656" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1528,7 +1506,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/testd3.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83554375">
+        <state vertical-scroll-proportion="2.944297">
           <caret line="74" column="85" selection-start-line="74" selection-start-column="85" selection-end-line="74" selection-end-column="85" />
           <folding />
         </state>
@@ -1536,7 +1514,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="81.166664">
+        <state vertical-scroll-proportion="-25.625">
           <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
           <folding />
         </state>
@@ -1544,8 +1522,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/split.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.151194">
-          <caret line="331" column="50" selection-start-line="331" selection-start-column="50" selection-end-line="331" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.055702917">
+          <caret line="519" column="36" selection-start-line="519" selection-start-column="36" selection-end-line="519" selection-end-column="36" />
           <folding />
         </state>
       </provider>

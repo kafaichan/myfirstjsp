@@ -473,7 +473,7 @@
         }
 
         $(document).ready(function(){
-            $("table tr:nth-child(1) td:nth-child(1)").click(
+            $("table.node-legend-box tr:nth-child(1) td:nth-child(1)").click(
                     function(){
                         if(showAuthor) {
                             $(this).css({"background-color": "#212121"});
@@ -484,7 +484,7 @@
                     }
             );
 
-            $("table tr:nth-child(1) td:nth-child(2)").click(
+            $("table.node-legend-box tr:nth-child(1) td:nth-child(2)").click(
                     function(){
                         if(showPaper) {
                             $(this).css({"background-color": "#212121"});
@@ -495,7 +495,7 @@
                     }
             );
 
-            $("table tr:nth-child(1) td:nth-child(3)").click(
+            $("table.node-legend-box tr:nth-child(1) td:nth-child(3)").click(
                     function(){
                         if(showVenue) {
                             $(this).css({"background-color": "#212121"});
@@ -506,7 +506,7 @@
                     }
             );
 
-            $("table tr:nth-child(1) td:nth-child(4)").click(
+            $("table.node-legend-box tr:nth-child(1) td:nth-child(4)").click(
                     function(){
                         if(showTopic) {
                             $(this).css({"background-color": "#212121"});
@@ -517,7 +517,7 @@
                     }
             );
 
-            $("table tr:nth-child(1) td:nth-child(5)").click(
+            $("table.node-legend-box tr:nth-child(1) td:nth-child(5)").click(
                     function(){
                         if(showVideo) {
                             $(this).css({"background-color": "#212121"});
