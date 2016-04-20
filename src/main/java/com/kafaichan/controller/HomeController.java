@@ -6,6 +6,11 @@ import com.kafaichan.util.CypherUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.neo4j.graphdb.Label;
+import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.ResourceIterable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.neo4j.rest.SpringRestGraphDatabase;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -24,6 +30,9 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    SpringRestGraphDatabase db;
 
     @RequestMapping(value="/helloworld",method= RequestMethod.POST)
     public ModelAndView home(String keyword) {
@@ -96,6 +105,38 @@ public class HomeController {
         return respObject.toString();
     }
 
+
+    @RequestMapping(value="/ajax2", method=RequestMethod.POST)
+    @ResponseBody
+    public String ajax2() throws Exception{
+
+//        Transaction tx = db.beginTx();
+//        try{
+//            Node n = db.createNode();
+//            n.setProperty("name", "imsoiqio");
+//            n.addLabel(new Label() {
+//                public String name() {
+//                    return "Person";
+//                }
+//            });
+//            tx.success();
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+        Label l = new Label() {
+            public String name() {
+                return "Person";
+            }
+        };
+        ResourceIterable<Node> iterable = db.findNodesByLabelAndProperty(l,"","");
+        Iterator<Node> iterator = iterable.iterator();
+
+        while(iterator.hasNext()){
+            Node n = iterator.next();
+            System.out.println(n.getProperty("name").toString());
+        }
+        return "success";
+    }
 
     private JSONObject ParseRelationship(JSONArray array){
         for(int i = 0; i < array.length(); ++i){

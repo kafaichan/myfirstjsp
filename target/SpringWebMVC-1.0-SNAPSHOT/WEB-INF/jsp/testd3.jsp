@@ -10,7 +10,7 @@
 <head>
     <title>MyD3Js</title>
     <script src="/resources/js/d3.js"></script>
-
+    <script src="/resources/js/jquery-1.12.1.js"></script>
     <style>
         .node {
             stroke: #fff;
@@ -56,11 +56,28 @@
             <%--stroke-width: 1.5px;--%>
         <%--}--%>
     </style>
+
+    <script>
+        function Test(){
+            console.log("start Test");
+            $.ajax({
+                method: 'POST',
+                url: '/ajax2',
+                success: function(data){
+                    console.log(data);
+                    console.log("success");
+                },
+                error: function(){
+                    console.log("error");
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
 <div id="map"></div>
-
+<button id="test" onclick="Test();">Click</button>
 <script>
     var w = window.innerWidth;
     var h = window.innerHeight;

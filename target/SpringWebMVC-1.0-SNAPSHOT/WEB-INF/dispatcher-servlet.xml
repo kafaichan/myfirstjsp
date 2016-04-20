@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:neo4j="http://www.springframework.org/schema/data/neo4j"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/data/neo4j
+       http://www.springframework.org/schema/data/neo4j/spring-neo4j.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--注意顺序问题-->
     <!--先mvc:resources-->
 
-        <context:component-scan base-package="com.kafaichan"/>
-        <mvc:resources mapping="/resources/css/*" location="/resources/css/" />
-        <mvc:resources mapping="/sigmajs/**" location="/resources/js/sigmajs/"/>
-        <mvc:resources mapping="/resources/js/*" location="/resources/js/" />
-        <mvc:resources mapping="/resources/fonts/*" location="/resources/fonts/"/>
-        <mvc:resources mapping="/resources/images/*" location="/resources/images/" />
+    <context:component-scan base-package="com.kafaichan"/>
+    <context:spring-configured />
 
-        <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-            <property name="prefix" value="/WEB-INF/jsp/" />
-            <property name="suffix" value=".jsp"/>
-        </bean>
+    <neo4j:repositories base-package="com.kafaichan.repository"/>
+
+    <!--<bean id="graphDbFactory" class="org.neo4j.graphdb.factory.GraphDatabaseFactory"/>-->
+    <!--<bean id="graphDatabaseService" scope="singleton" destroy-method="shutdown"-->
+          <!--factory-bean="graphDbFactory" factory-method="newEmbeddedDatabase">-->
+        <!--<constructor-arg value="D:\Desktop\FinalYearProject\neo4j-community-2.3.2-windows\neo4j-community-2.3.2\data\mydist"/>-->
+    <!--</bean>-->
+    <!--<neo4j:config graphDatabaseService="graphDatabaseService" base-package="com.kafaichan.domain"/>-->
+
+    <bean id="graphDatabaseService" class="org.springframework.data.neo4j.rest.SpringRestGraphDatabase" destroy-method="shutdown">
+        <constructor-arg value="http://localhost:7474/db/data/"/>
+    </bean>
+    <neo4j:config graphDatabaseService="graphDatabaseService" base-package="com.kafaichan.domain"/>
 
 
-        <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/resources/css/*" location="/resources/css/" />
+    <mvc:resources mapping="/resources/js/*" location="/resources/js/" />
+    <mvc:resources mapping="/resources/fonts/*" location="/resources/fonts/"/>
+    <mvc:resources mapping="/resources/images/*" location="/resources/images/" />
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <tx:annotation-driven mode="proxy"/>
+    <mvc:annotation-driven/>
 </beans>
